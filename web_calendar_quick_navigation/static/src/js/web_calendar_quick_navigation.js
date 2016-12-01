@@ -7,7 +7,7 @@ openerp.web_calendar_quick_navigation = function (session) {
             var currentM = view.start.getMonth();
             var len = monthes.length;
             var monthPeriod = [];
-            for (var i=currentM-6; i<=currentM+5; i++) {
+            for (var i=currentM-6-6; i<=currentM+5+6; i++) {
                 var item = {
                     current: i == currentM,
                     month: i,
@@ -49,9 +49,9 @@ openerp.web_calendar_quick_navigation = function (session) {
                 weekPeriod.push({
                     current: i == ts,
                     date: i,
-                    name: view.calendar.formatDate(d, 'dd/MM') + '-'
-                        + view.calendar.formatDate(dE, 'dd/MM')
-                })
+                    name: view.calendar.formatDate(d, 'ddMMM') + '-'
+                        + view.calendar.formatDate(dE, 'ddMMM')
+                });
             }
             if ($(element).find('div.quick_weeks').length) {
                 $(element).find('div.quick_weeks').replaceWith($(QWeb.render("CalendarView.quick_navigation.panel.weeks", {
@@ -119,11 +119,11 @@ openerp.web_calendar_quick_navigation = function (session) {
             var self = this;
             res.viewRender = function(view, element) {
                 self.view_render(self, view, element);
-            }
+            };
             res.select = function (start_date, end_date, all_day, _js_event, _view) {
                 self.select(self, start_date, end_date, all_day, _js_event, _view);
-            }
+            };
             return res;
         }
     });
-}
+};
