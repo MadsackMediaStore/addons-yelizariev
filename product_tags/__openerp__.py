@@ -28,6 +28,7 @@
     "category": "Sales Management",
     "depends": [
         'product',
+        'sale',
     ],
     "description": """
     Add tags in products like it's done for the partners
@@ -38,7 +39,6 @@
         'product_view.xml',
     ],
     'installable': True,
-    'active': False,
 }
 
 # vim:expandtab:smartindent:tabstop=4:softtabstop=4:shiftwidth=4:

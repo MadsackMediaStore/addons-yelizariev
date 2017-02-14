@@ -1,6 +1,6 @@
 <openerp>
     <data noupdate="1">
-        <record id="email_registration" model="email.template">
+        <record id="email_registration" model="mail.template">
             <field name="name">email for registation</field>
             <field name="subject">Confirm registration</field>
             <field name="partner_to">${object.id}</field>

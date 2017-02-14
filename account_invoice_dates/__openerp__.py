@@ -8,7 +8,7 @@
 
     "author": "IT-Projects LLC, Ivan Yelizariev",
     "website": "https://it-projects.info",
-    "license": "GPL-3",
+    "license": "LGPL-3",
     # "price": 9.00,
     # "currency": "EUR",
 
@@ -21,6 +21,6 @@
     ],
     "demo": [
     ],
-    "installable": True,
+    "installable": False,
     "auto_install": False,
 }

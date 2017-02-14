@@ -1,24 +1,33 @@
 # -*- coding: utf-8 -*-
 {
     'name': "Backend debranding",
-    'version': '1.0.5',
+    'version': '1.0.14',
     'author': 'IT-Projects LLC, Ivan Yelizariev',
-    'license': 'GPL-3',
+    'license': 'LGPL-3',
     'category': 'Debranding',
     'website': 'https://twitter.com/yelizariev',
     'price': 150.00,
     'currency': 'EUR',
-    'depends': ['web', 'share', 'disable_openerp_online', 'mail_delete_sent_by_footer'],
+    'depends': [
+        'web',
+        'mail',
+        'web_planner',
+        'access_apps',
+        'access_settings_menu',
+        'mail_base',
+    ],
     'data': [
         'security/web_debranding_security.xml',
+        'security/ir.model.access.csv',
         'data.xml',
         'views.xml',
         'js.xml',
         'pre_install.yml',
     ],
     'qweb': [
-        'static/src/xml/database_manager.xml',
+        'static/src/xml/web.xml',
     ],
     'auto_install': False,
+    'uninstall_hook': 'uninstall_hook',
     'installable': True
 }

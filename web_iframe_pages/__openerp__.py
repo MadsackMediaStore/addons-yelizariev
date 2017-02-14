@@ -3,7 +3,7 @@
     'name': "IFrame pages",
     'version': '1.0.0',
     'author': 'IT-Projects LLC, Ivan Yelizariev',
-    'license': 'GPL-3',
+    'license': 'LGPL-3',
     'category': 'Custom',
     'website': 'https://yelizariev.github.io',
     'depends': ['web_iframe'],
@@ -11,5 +11,5 @@
         'web_iframe_pages_views.xml',
         'security/ir.model.access.csv',
     ],
-    'installable': True
+    'installable': False
 }

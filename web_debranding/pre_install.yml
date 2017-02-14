@@ -1,3 +1,10 @@
 -
+  !python {model: ir.config_parameter}: |
+    self.create_debranding_parameters()
+-
   !python {model: ir.translation}: |
-    self._get_source.clear_cache(self)
+    self.clear_caches()
+
+-
+  !python {model: ir.ui.view}: |
+    self._create_debranding_views()

@@ -1,7 +1,6 @@
-.. _changelog:
-
-Updates
-=======
+`1.0.5`
+-------
+- PORT: support for 10.0
 
 `1.0.4`
 -------

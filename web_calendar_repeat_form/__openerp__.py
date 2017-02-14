@@ -9,10 +9,10 @@ To activate feature in calendar view xml defenition use the following attribute 
 """,
     'version': '0.1',
     'author': 'IT-Projects LLC, Veronika Kotovich',
-    'license': 'GPL-3',
+    'license': 'LGPL-3',
     'website': 'https://twitter.com/vkotovi4',
     'category': 'Web',
     'depends': ['web_calendar'],
     'data': ['views.xml'],
-    'installable': True
+    'installable': False,
 }

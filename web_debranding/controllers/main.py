@@ -1,6 +1,4 @@
 # -*- coding: utf-8 -*-
-import re
-
 import openerp
 from openerp import http
 from openerp.addons.web.controllers.main import Binary
@@ -10,7 +8,8 @@ import functools
 from openerp.http import request
 from openerp.modules import get_module_resource
 from cStringIO import StringIO
-from openerp.tools.translate import _
+
+from ..models.ir_translation import debrand
 
 db_monodb = http.db_monodb
 
@@ -75,7 +74,8 @@ class WebClientCustom(WebClient):
         content, checksum = controllers_main.concat_xml(files)
         if request.context['lang'] == 'en_US':
             content = content.decode('utf-8')
-            content = self._debrand(content)
+            # request.env could be not available
+            content = debrand(request.session.db and request.env or None, content)
 
         return controllers_main.make_conditional(
             request.make_response(content, [('Content-Type', 'text/xml')]),
@@ -84,12 +84,9 @@ class WebClientCustom(WebClient):
     @http.route('/web/webclient/translations', type='json', auth="none")
     def translations(self, mods=None, lang=None):
         res = super(WebClientCustom, self).translations(mods, lang)
+
         for module_key, module_vals in res['modules'].iteritems():
             for message in module_vals['messages']:
-                message['id'] = self._debrand(message['id'])
-                message['string'] = self._debrand(message['string'])
+                message['id'] = request.env['ir.translation']._debrand(message['id'])
+                message['string'] = request.env['ir.translation']._debrand(message['string'])
         return res
-
-    def _debrand(self, string):
-        new_company = request.env['ir.config_parameter'].get_param('web_debranding.new_name') or _('Software')
-        return re.sub(r'[Oo]doo', new_company, string)
